@@ -2,6 +2,11 @@
 import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
-    println(args[0])
-    println(args[1])
+    if (args.size != 1) {
+        println(args[0])
+        println(args[1])
+        exitProcess(1)
+    }
+
+    exitProcess(0)
 }
