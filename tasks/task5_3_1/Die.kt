@@ -1,4 +1,4 @@
-// Task 5.3.2: dice rolling simulation
+// Task 5.1.2: die rolling simulation
 import kotlin.random.Random
 fun rollDie(sides: Int = 6) {
     if (sides in setOf(4, 6, 8, 10, 12, 20)) {
@@ -16,33 +16,21 @@ fun readInt(msg: String): Int {
     println(msg)
     val value = readln()
     if (value == "") {
-        var number = 0
-        return number
+        var sides = 0
+        return sides
     }
     else {
-        var number = value.toInt()
-        return number
+        var sides = value.toInt()
+        return sides
     }
 }
 
 fun main() {
     val sides = readInt("enter the number of sides on your die or press enter to proceed with a 6 sided die: ")
-    val numOfDie = readInt("enter the number of dice you would like to roll: ")
-    var rolls = 0
-    if (numOfDie == 0) {
-        rolls = 1
-    }
-    else {
-        rolls = numOfDie
-    }
     if (sides == 0) {
-        for (roll in 1..rolls) {
-            rollDie()
-        }
+        rollDie()
     }
     else {
-        for (roll in 1..rolls) {
-            rollDie(sides)
-        }
+        rollDie(sides)
     }
 }
