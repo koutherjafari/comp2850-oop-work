@@ -39,7 +39,7 @@ fun obtainGuess(attempt: Int): String {
 fun evaluateGuess(guess: String, target: String): List<Int> {
     //Compares a guess with the target word. Returns a list containing 5 integers, representing the result of comparison at each letter position. 0 indicates no match, 1 indicates a match.
     var checks = []
-    for (i in 1..5) {
+    for (i in 0..4) {
         if (guess[i] == target[i]) {
             checks.append(1)
         }
@@ -53,7 +53,7 @@ fun evaluateGuess(guess: String, target: String): List<Int> {
 //DONT NEED UNIT TESTS
 fun displayGuess(guess: String, matches: List<Int>) {
     //Displays the letters of a guess that match target word, or a ‘?’ character where there is no match
-    for (i in 1..5) {
+    for (i in 0..4) {
         if (matches[i] == 1) {
             print(guess[i])
         }
