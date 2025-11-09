@@ -4,7 +4,7 @@ import io.kotest.matchers.shouldBe
 import java.io.File
 
 //@Suppress("unused")
-class WordleTest ({
+class WordleTest : StringSpec ({
     "checking if the word entered is valid" {
         isValid("hello") shouldBe true
         isValid("heys") shouldBe false
@@ -13,17 +13,18 @@ class WordleTest ({
     "checking if list of strings was created" {
         var tfile = File("tfile.txt")
         tfile.writeText("apples\nbanana\ncarrot\ngrapes\nkiwi\n")
-        readWordList("tifle.txt") shouldBe mutableListOf("apples", "banana", "carrot", "grapes", "kiwi")
+        readWordList("tfile.txt") shouldBe mutableListOf("apples", "banana", "carrot", "grapes", "kiwi")
     }
     "checking what happens with an empty text file" {
         var tfile = File("tfile.txt")
         tfile.writeText("")
-        readWordList("tfile.txt") shouldbe mutableListOf()
+        readWordList("tfile.txt") shouldBe mutableListOf()
     }
     "checking random word picker actually picks a word in the list" {
         var tlist = mutableListOf("apples", "banana", "carrot", "grapes", "kiwi")
         var randomWord = pickRandomWord(tlist)
-        randomWord shouldBe in tlist
+        var inList = randomWord in tlist
+        inList shouldBe true
     }
     "checking random word picker returns nothing if list is empty" {
         var tlist = mutableListOf<String>()

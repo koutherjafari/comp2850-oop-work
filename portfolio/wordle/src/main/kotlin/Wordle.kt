@@ -23,7 +23,7 @@ fun pickRandomWord(words: MutableList<String>): String {
     }
     else {
         var randomWord = words.random()
-        words.remove(randomWord)
+        //words.remove(randomWord)
         return randomWord
     }
     
@@ -45,6 +45,7 @@ fun obtainGuess(attempt: Int): String {
             return ""
         }
     }
+    return ""
 }
 
 fun evaluateGuess(guess: String, target: String): List<Int> {
