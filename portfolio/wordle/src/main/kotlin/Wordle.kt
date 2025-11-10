@@ -53,6 +53,9 @@ fun evaluateGuess(guess: String, target: String): List<Int> {
     var checks = mutableListOf<Int>()
     for (i in 0..4) {
         if (guess[i] == target[i]) {
+            checks.add(2)
+        }
+        else if (target.contains(guess[i])) {
             checks.add(1)
         }
         else {
@@ -65,13 +68,19 @@ fun evaluateGuess(guess: String, target: String): List<Int> {
 //DONT NEED UNIT TESTS
 fun displayGuess(guess: String, matches: List<Int>) {
     //Displays the letters of a guess that match target word, or a ‘?’ character where there is no match
+    val green = "\u001b[32m"//ANSI escape code for green text colour
+    val yellow = "\u001b[93m"//ANSI escape code for bright yellow text colour due to yellow not being visible enough
+    val black = "\u001b[30m"//ANSI escape code for black text colour
     for (i in 0..4) {
-        if (matches[i] == 1) {
-            print(guess[i])
+        if (matches[i] == 2) {
+            print(green + guess[i])
+        }
+        else if (matches[i] == 1) {
+            print(yellow + guess[i])
         }
         else {
-            print("?")
+            print(black + guess[i])
         }
     }
-    println("")
+    println(black + "")
 }

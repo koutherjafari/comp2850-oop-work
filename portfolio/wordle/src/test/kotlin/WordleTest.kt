@@ -35,18 +35,24 @@ class WordleTest : StringSpec ({
         var guess = "hello"
         var target = "hello"
         var checks = evaluateGuess(guess, target)
-        checks shouldBe listOf(1, 1, 1, 1, 1)
+        checks shouldBe listOf(2, 2, 2, 2, 2)
     }
     "checks evaluate guess function when partially right" {
         var guess = "audio"
         var target = "audit"
         var checks = evaluateGuess(guess, target)
-        checks shouldBe listOf(1, 1, 1, 1, 0)
+        checks shouldBe listOf(2, 2, 2, 2, 0)
     }
     "checks evaluate guess function when completely wrong" {
         var guess = "hello"
         var target = "audit"
         var checks = evaluateGuess(guess,target)
         checks shouldBe listOf(0, 0, 0, 0, 0)
+    }
+    "checks evaluate guess function when wrong but correct letters exist in the guess" {
+        var guess = "hatch"
+        var target = "hence"
+        var checks = evaluateGuess(guess, target)
+        checks shouldBe listOf(2, 0, 0, 2, 1)
     }
 })
